@@ -1,0 +1,5 @@
+- name: Install aws-cli
+  become: true
+  pacman: name=aws-cli state=present
+  tags:
+    - aws-cli

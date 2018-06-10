@@ -3,5 +3,6 @@
   roles:
     - base
     - git
+    - aws
     - powertop
     - spacemacs
