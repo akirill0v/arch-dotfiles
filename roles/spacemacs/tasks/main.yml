@@ -1,0 +1,16 @@
+---
+- name: Install emacs
+  pacman: name={{ item }} state=present
+  with_items:
+    - emacs
+
+- name: Pull spacemacs base
+  git:
+    repo: 'https://github.com/syl20bnr/spacemacs'
+    dest: '~/.emacs.d'
+    update: no
+
+- name: Copy local config
+  copy:
+    src: "spacemacs"
+    dest: "~/.spacemacs"

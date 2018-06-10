@@ -1,0 +1,16 @@
+---
+- name: Install git packages
+  become: true
+  pacman: name={{ item }} state=present
+  with_items:
+    - git
+
+- name: Copy gitconfig file
+  copy:
+    src: "gitconfig"
+    dest: "~/.gitconfig"
+
+- name: Copy gitconfig-local file
+  copy:
+    src: "gitconfig-local"
+    dest: "~/.gitconfig-local"

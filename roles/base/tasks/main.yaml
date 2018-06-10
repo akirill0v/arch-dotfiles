@@ -1,0 +1,14 @@
+---
+- name: Install base packages
+  become: true
+  pacman: name={{ item }} state=present
+  with_items:
+    - powertop
+
+- name: Xmodmap reinstall
+  copy:
+    src: xmodmap
+    dest: "/home/{{ user.name }}/.Xmodmap"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0644

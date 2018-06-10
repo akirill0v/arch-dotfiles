@@ -1,0 +1,13 @@
+user:
+  name: alex
+  email: saratovsource@gmail.com
+hostname: alex-lenovo-tp
+dotfiles:
+  url: git@github.com:saratovsource/arch-dotfiles.git
+  destination: projects/dotfiles
+
+base_packages:
+  - tmux
+  - git
+  - rsync
+  - jq
