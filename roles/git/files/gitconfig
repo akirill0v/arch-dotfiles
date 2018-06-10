@@ -9,7 +9,7 @@
 
 [status]
   relativePaths = true
-  showUntrackedFiles = no
+  # showUntrackedFiles = no
   submodulesummary = true
 
 [rerere]
@@ -26,8 +26,6 @@
 
 [branch]
   autosetupmerge = true
-
-[status]
 
 [mergetool]
   keepBackup = false
