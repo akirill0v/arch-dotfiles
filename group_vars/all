@@ -6,6 +6,8 @@ dotfiles:
   url: git@github.com:saratovsource/arch-dotfiles.git
   destination: projects/dotfiles
 
+fingerprint: False
+
 base_packages:
   - tmux
   - git
