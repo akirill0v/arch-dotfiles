@@ -40,3 +40,9 @@
   copy: src=logind.conf dest=/etc/systemd/logind.conf
   tags:
     - trackpoint
+
+- name: Update russian keyboard layout
+  become: true
+  copy: src=00-keyboard.conf dest=/etc/X11/xorg.conf.d/00-keyboard.conf
+  tags:
+    - xkb-layout

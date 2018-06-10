@@ -277,7 +277,7 @@ bindsym $mod+e layout toggle split
 
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -1045,6 +1045,7 @@ client.urgent           #d42121 #d42121 #f7f7f7 #d42121
 # Settings of arcolinux will be applied
 #exec --no-startup-id setxkbmap ru
 #exec --no-startup-id setxkbmap us
+exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle,ctrl:nocaps
 
 
 
