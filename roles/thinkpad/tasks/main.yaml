@@ -34,3 +34,9 @@
   copy: src=10-trackpoint.rules dest=/etc/udev/rules.d/10-trackpoint.rules
   tags:
     - trackpoint
+
+- name: Suspend on lid switch
+  become: true
+  copy: src=logind.conf dest=/etc/systemd/logind.conf
+  tags:
+    - trackpoint
