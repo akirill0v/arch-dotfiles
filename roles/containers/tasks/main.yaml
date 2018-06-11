@@ -1,0 +1,28 @@
+---
+- name: Docker packages
+  become: yes
+  aur: name={{ item }} user={{ user.name }}
+  with_items:
+    - docker-bin
+    - docker-compose-bin
+
+- name: Start docker service
+  become: true
+  systemd:
+    name: docker
+    daemon_reload: true
+    state: started
+
+- name: Add user to Docker group
+  become: true
+  user: name={{ user.name }}
+        groups=docker
+        append=yes
+
+- name: Kubernetes packages
+  become: true
+  aur: name={{ item }} user={{ user.name }}
+  with_items:
+    - kubectl-bin
+    - kubernetes-helm
+    - kops-beta-bin
