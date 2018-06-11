@@ -1,14 +1,23 @@
 ---
 - name: Install emacs
+  become: true
   pacman: name={{ item }} state=present
   with_items:
     - emacs
+
+- name: Install fonts
+  become: true
+  aur: name={{ item }} user={{ user.name }}
+  with_items:
+    - otf-fira-code
+    - ttf-fira-code
 
 - name: Pull spacemacs base
   git:
     repo: 'https://github.com/syl20bnr/spacemacs'
     dest: '~/.emacs.d'
     update: no
+    #version: develop
 
 - name: Copy local config
   copy:
