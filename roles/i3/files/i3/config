@@ -137,6 +137,7 @@ bindsym $mod+F11 exec --no-startup-id rofi -show run -fullscreen -font "Noto San
 
 # start rofi small
 bindsym $mod+F12 exec --no-startup-id rofi -show run -font "Noto Sans 13"
+bindsym Control+Return exec --no-startup-id rofi -show run -font "Noto Sans 13"
 
 
 
@@ -462,6 +463,7 @@ exec --no-startup-id xfce4-power-manager &
 # activate again if errors occurr
 #exec --no-startup-id xfsettingsd &
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+exec --no-startup-id emacs --daemon
 
 #####################################################################################################################
 #################                          applications keyboard shortcuts                          #################
@@ -505,6 +507,9 @@ bindsym control+mod1+u exec --no-startup-id pavucontrol
 # start xfce-appfinder
 #arcolinux does not seem to work
 bindsym control+mod1+a exec --no-startup-id xfce4-appfinder
+
+# start emacs client and connect to server
+bindsym Control+Shift+e exec --no-startup-id emacsclient -c server
 
 
 

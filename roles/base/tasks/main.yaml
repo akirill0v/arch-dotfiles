@@ -4,6 +4,13 @@
   pacman: name={{ item }} state=present
   with_items:
     - powertop
+    - xclip
+
+- name: Install aur packages
+  become: true
+  aur: name={{ item }} user={{ user.name }}
+  with_items:
+    - emacs-xclip
 
 - name: Xmodmap reinstall
   copy:
