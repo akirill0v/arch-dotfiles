@@ -1,5 +1,6 @@
 ---
 - name: Copy i3 config
-  synchronize:
-    src: i3
-    dest: "~/.config/i3"
+  copy:
+    src: "i3"
+    dest: "~/.config/"
+    force: yes

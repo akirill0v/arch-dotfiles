@@ -1,11 +1,13 @@
 ---
 - hosts: localhost
   roles:
-    - base
-    - git
-    - aws
-    - powertop
-    - thinkpad
-    - spacemacs
-    - weechat
-    - messengers
+    - { role: base, tags: ["base", "bootstrap"] }
+    - { role: git, tags: ["develop"] }
+    - { role: aws, tags: ["cloud", "develop"] }
+    - { role: powertop, tags: ["laptop", "thinkpad", "base"] }
+    - { role: thinkpad, tags: ["laptop", "thinkpad"] }
+    - { role: i3, tags: ["desktop", "base", "i3"] }
+    - { role: spacemacs, tags: ["develop", "ide"] }
+    - { role: weechat, tags: ["messengers", "desktop"] }
+    - { role: messengers, tags: ["messengers", "desktop"] }
+    - { role: mail, tags: ["messengers", "desktop"] }

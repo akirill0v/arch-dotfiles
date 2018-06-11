@@ -1,0 +1,6 @@
+---
+- name: Install mail client
+  become: true
+  aur: name={{ item }} user={{ user.name }}
+  with_items:
+    - mailspring
