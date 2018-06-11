@@ -1,0 +1,26 @@
+---
+- name: dependencies for clients
+  become: true
+  aur: name={{ item }} user={{ user.name }}
+  with_items:
+    - libunity
+
+- name: Install slack from aur
+  become: true
+  aur: name={{ item }} user={{ user.name }}
+  with_items:
+    - slack-desktop
+    - slack-term-bin
+    - slack-tool
+
+- name: Install telegram app
+  become: true
+  aur: name={{ item }} user={{ user.name }}
+  with_items:
+    - telegram-desktop-bin
+
+- name: Install Skype app
+  become: true
+  aur: name={{ item }} user={{ user.name }}
+  with_items:
+    - skypeforlinux-preview-bin
