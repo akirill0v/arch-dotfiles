@@ -11,6 +11,7 @@
   aur: name={{ item }} user={{ user.name }}
   with_items:
     - emacs-xclip
+    - srandrd
 
 - name: Xmodmap reinstall
   copy:

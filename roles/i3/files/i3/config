@@ -137,7 +137,7 @@ bindsym $mod+F11 exec --no-startup-id rofi -show run -fullscreen -font "Noto San
 
 # start rofi small
 bindsym $mod+F12 exec --no-startup-id rofi -show run -font "Noto Sans 13"
-bindsym Control+Return exec --no-startup-id rofi -show run -font "Noto Sans 13"
+bindsym Control+Return exec --no-startup-id rofi -show run -font "Fira Code 13"
 
 
 
@@ -346,13 +346,18 @@ font pango:Noto Mono Regular 13
 # Assign application to start on a specific workspace
 # you can find the class with the program xprop
 
-# Workspace 1 browser related
-#assign [class="Firefox|Vivaldi-stable|Vivaldi-snapshot|Opera"]                      → 1
-#assign [class="Chromium|Google-chrome"]                                             → 1
 
-# Workspace 2 text editor related
-#assign [class="sublime-text|sublime_text|Sublime_text|subl|Subl|subl3|Subl3"]       → 2
-#assign [class="Xed|xed|Brackets|Atom|Code|Geany"]                                   → 2
+# Workspace 1 text editor related
+#assign [class="sublime-text|sublime_text|Sublime_text|subl|Subl|subl3|Subl3"]       → 1
+#assign [class="Xed|xed|Brackets|Atom|Code|Geany"]                                   → 1
+assign [class="Emacs|emacs|spacemacs"]                                               → 1
+
+# Workspace 2 browser related
+assign [class="Firefox|Vivaldi-stable|Vivaldi-snapshot|Opera"]                       → 2
+assign [class="Chromium|Google-chrome"]                                              → 2
+
+# Workspace 3 messengers
+assign [class="Slack|Telegram|Skype"]                                                → 3
 
 # Workspace 3 Inkscape
 #assign [class="Inkscape"]                                                           → 3
@@ -372,10 +377,10 @@ font pango:Noto Mono Regular 13
 #assign [class="Vmplayer|VirtualBox"]						    → 7
 
 # Workspace 8 file managers
-#assign [class="Nemo|Thunar|Caja|nautilus|Nautilus"]                                 → 8
+assign [class="Nemo|Thunar|Caja|nautilus|Nautilus"]                                 → 8
 
 # Workspace 9 email clients
-#assign [class="Geary|Evolution"]                                                    → 9
+assign [class="Geary|Evolution|Mailspring|mailspring"]                              → 9
 
 # Workspace 10 music related
 #assign [class="Spotify|spotify"]                                                    → 10
@@ -398,16 +403,21 @@ for_window [class="Vivaldi-stable"] focus
 #text-editor
 #exec --no-startup-id geany
 #exec --no-startup-id atom
+exec --no-startup-id emacs --daemon
 
 #file manager
-# exec --no-startup-id thunar
+#exec --no-startup-id thunar
 
 #Mail clients
 #exec --no-startup-id evolution
 
 #Music
 #exec --no-startup-id spotify
-for_window [class="Spotify"] focus
+#for_window [class="Spotify"] focus
+
+#Messengers
+exec --no-startup-id slack
+exec --no-startup-id telegram-desktop
 
 
 
@@ -423,13 +433,13 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id pamac-tray
 
 # bluetooth
-#exec --no-startup-id blueberry-tray
+exec --no-startup-id blueberry-tray
 
 # network
 exec --no-startup-id nm-applet
 
 # num lock activated
-exec_always --no-startup-id numlockx on
+#exec_always --no-startup-id numlockx on
 
 # dropbox
 #exec --no-startup-id dropbox start
@@ -463,7 +473,6 @@ exec --no-startup-id xfce4-power-manager &
 # activate again if errors occurr
 #exec --no-startup-id xfsettingsd &
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
-exec --no-startup-id emacs --daemon
 
 #####################################################################################################################
 #################                          applications keyboard shortcuts                          #################
@@ -526,7 +535,7 @@ bindsym control+mod1+g exec --no-startup-id chromium;focus
 #workspace 2 related
 #bindsym $mod+F2 exec --no-startup-id geany;focus
 bindsym $mod+F2 exec --no-startup-id atom;focus
-bindsym control+mod1+w exec --no-startup-id geany;focus
+#bindsym control+mod1+w exec --no-startup-id geany;focus
 
 #workspace 3 related
 bindsym $mod+F3 exec --no-startup-id inkscape;focus
@@ -814,7 +823,7 @@ mode "$mode_gaps_outer" {
         bindsym Shift+plus  gaps outer all plus 5
         bindsym Shift+minus gaps outer all minus 5
         bindsym Shift+0     gaps outer all set 0
-
+        
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -844,7 +853,7 @@ bar {
 
     height 25
     workspace_buttons yes
-    font pango:Noto Sans 14
+    font pango:Fira Code 14
 
     position top
     #position bottom
@@ -882,10 +891,10 @@ bar {
     # documentation : https://i3wm.org/docs/user-contributed/conky-i3bar.html
     # conky configuration is in conky-i3statusbar
 
-# status_command ~/.config/i3/start-conky-i3statusbar.sh
+status_command ~/.config/i3/start-conky-i3statusbar.sh
 
 # Option 3.1 : i3status-rs
-status_command i3status-rs ~/.config/i3/i3status-rs.toml
+# status_command i3status-rs ~/.config/i3/i3status-rs.toml
 
 # OPTION 4 : polybar
 # polybar is launched elsewhere - search for the word
