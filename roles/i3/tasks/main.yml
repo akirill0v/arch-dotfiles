@@ -20,10 +20,13 @@
 
 - name: Create default config directory
   file: path=~/.i3 state=directory
+  when: arch=="manjaro"
 
 - name: Create symlink to config
   file: src=~/.config/i3/config dest=~/.i3/config state=link force=yes
+  when: arch=="manjaro"
 
 - name: Make i3exit executable
   file: dest=~/.config/i3/scripts/i3exit.sh mode=a+x
+  when: arch=="manjaro"
 

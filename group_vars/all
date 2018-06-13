@@ -8,6 +8,8 @@ dotfiles:
 
 fingerprint: False
 
+arch: arco
+
 base_packages:
   - tmux
   - git
