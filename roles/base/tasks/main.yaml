@@ -5,6 +5,8 @@
   with_items:
     - powertop
     - xclip
+    - pamixer
+    - xorg-xbacklight
 
 - name: Install aur packages
   become: true

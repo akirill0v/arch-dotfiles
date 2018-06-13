@@ -868,7 +868,7 @@ bar {
     # Second one is the standard statusbar with my personal settings
 
 #status_command i3status
-status_command i3status -c ~/.config/i3/i3status.conf
+#status_command i3status -c ~/.config/i3/i3status.conf
 
 
 # OPTION 2 : i3blocks
@@ -894,7 +894,7 @@ status_command i3status -c ~/.config/i3/i3status.conf
 #status_command ~/.config/i3/start-conky-i3statusbar.sh
 
 # Option 3.1 : i3status-rs
-#status_command i3status-rs ~/.config/i3/i3status-rs.toml
+status_command i3status-rs ~/.config/i3/i3status-rs.toml
 
 # OPTION 4 : polybar
 # polybar is launched elsewhere - search for the word
