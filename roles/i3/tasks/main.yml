@@ -1,6 +1,30 @@
 ---
+- name: Install base packages
+  become: true
+  pacman: name={{ item }} state=present
+  with_items:
+    - termite
+    - rofi
+
+- name: Install aur packages
+  become: true
+  aur: name={{ item }} user={{ user.name }}
+  with_items:
+    - dmenu
+    - i3status-rust
+
 - name: Copy i3 config
   copy:
     src: "i3"
     dest: "~/.config/"
     force: yes
+
+- name: Create default config directory
+  file: path=~/.i3 state=directory
+
+- name: Create symlink to config
+  file: src=~/.config/i3/config dest=~/.i3/config state=link force=yes
+
+- name: Make i3exit executable
+  file: dest=~/.config/i3/scripts/i3exit.sh mode=a+x
+

@@ -12,6 +12,7 @@
   with_items:
     - emacs-xclip
     - srandrd
+    - enpass-bin
 
 - name: Xmodmap reinstall
   copy:
