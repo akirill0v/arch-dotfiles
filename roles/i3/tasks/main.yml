@@ -11,7 +11,6 @@
   aur: name={{ item }} user={{ user.name }}
   with_items:
     - dmenu
-    - i3status-rust
 
 - name: Copy i3 config
   copy:
