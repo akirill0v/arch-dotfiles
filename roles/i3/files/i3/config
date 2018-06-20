@@ -167,6 +167,18 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
+# change display layouts
+bindsym Mod1+Shift+l mode "$display_layout"
+set $display_layout Display layouts (d) dual, (s) single
+mode "$display_layout" {
+    bindsym d exec --no-startup-id sh ~/.config/i3/scripts/dual_monitor.sh, mode "default"
+    bindsym s exec --no-startup-id sh ~/.config/i3/scripts/single_monitor.sh, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 
 
 #####################################################################################################################
@@ -836,8 +848,7 @@ mode "$mode_gaps_outer" {
 #####################################################################################################################
 
 #if you want transparency on non-focused windows, ...
-# TODO: Fix broken xrandr
-#exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
+exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
 
 
 
