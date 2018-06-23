@@ -122,9 +122,9 @@ ${color3}${cpugraph cpu1 50,133 5e7b7b d8deeb -t} ${cpugraph cpu2 50,133 5e7b7b 
 ${cpugraph cpu3 50,133 5e7b7b d8deeb -t} ${cpugraph cpu4 50,133 5e7b7b d8deeb -t}
 
 ${color3}${downspeedgraph wlp5s0 50,269 5e7b7b d8deeb}
-${color1}${font FontAwesome}${font}   download ${alignr}${downspeedf wlp5s0}k/s (${totaldown enp3s0})
+${color1}${font FontAwesome}${font}   download ${alignr}${downspeedf wlp5s0}k/s (${totaldown wlp5s0})
 ${hr}
-${font FontAwesome}${font}   upload ${alignr}${upspeedf wlp5s0}k/s (${totalup enp3s0})
+${font FontAwesome}${font}   upload ${alignr}${upspeedf wlp5s0}k/s (${totalup wlp5s0})
 ${color3}${upspeedgraph wlp5s0 50,269 99c8e8 618094}
 
 ${color1}${hr}${color}
