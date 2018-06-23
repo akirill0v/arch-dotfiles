@@ -11,12 +11,13 @@
   aur: name={{ item }} user={{ user.name }}
   with_items:
     - dmenu
+    - alacritty-scrollback-git 
 
-- name: Copy i3 config
-  copy:
-    src: "i3"
-    dest: "~/.config/"
-    force: yes
+- name: Copy configs directories to destanation
+  copy: src={{ item }} dest="~/.config/" force=yes
+  with_items:
+    - i3
+    - alacritty
 
 - name: Create default config directory
   file: path=~/.i3 state=directory
