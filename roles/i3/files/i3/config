@@ -525,17 +525,6 @@ bindsym $mod+F7 exec --no-startup-id virtualbox;focus
 for_window [class="Thunar"] focus
 bindsym $mod+F8 exec --no-startup-id thunar;focus
 bindsym $mod+Shift+Return exec --no-startup-id thunar;focus
-bindsym control+mod1+b exec --no-startup-id thunar;focus
-
-#workspace 9 related
-# bindsym $mod+F9 exec --no-startup-id evolution;focus
-# bindsym control+mod1+e exec --no-startup-id evolution;focus
-#bindsym $mod+F9 exec --no-startup-id geary;focus
-#bindsym control+mod1+e exec --no-startup-id geary;focus
-
-#workspace 10 related
-bindsym $mod+F10 exec --no-startup-id spotify;focus
-bindsym control+mod1+s exec --no-startup-id spotify;focus
 
 #####################################################################################################################
 #################                          screenshots                                              #################
@@ -1008,3 +997,4 @@ exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:win_space_
 
 # get the mouse out of the way with unclutter
 #exec --no-startup-id unclutter
+
