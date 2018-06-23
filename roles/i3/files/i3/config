@@ -63,12 +63,12 @@ set $right l
 # use xrandr and/or arandr to know the names of your monitors
 # use this line to tell which monitor is on the right
 # xrandr --output DVI-I-2 --right-of DVI-I-1 --auto
-exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
+exec --no-startup-id xrandr --output HDMI1 --top-of eDP1 --auto
 
 
 # my current setup
-set $firstMonitor HDMI1
-set $secondMonitor HDMI2
+set $firstMonitor eDP1
+set $secondMonitor HDMI1
 
 #set $firstMonitor LVDS1
 #set $secondMonitor LVDS1
@@ -126,17 +126,10 @@ bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 # start dmenu
 bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
 
-# gmrun
-bindsym mod1+F2 exec --no-startup-id gmrun
-
 # start xfce-appfinder
-bindsym mod1+F3 exec --no-startup-id xfce4-appfinder
-
-# start rofi full
-bindsym $mod+F11 exec --no-startup-id rofi -show run -fullscreen -font "Noto Sans 13"
+bindsym Control+Shift+Return exec --no-startup-id xfce4-appfinder
 
 # start rofi small
-bindsym $mod+F12 exec --no-startup-id rofi -show run -font "Noto Sans 13"
 bindsym Control+Return exec --no-startup-id rofi -show run -font "Fira Code 13"
 
 
@@ -155,12 +148,12 @@ bindsym $mod+X mode "$mode_system"
 
 set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
 mode "$mode_system" {
-    bindsym k exec --no-startup-id ~/.config/i3/scripts/i3exit.sh lock, mode "default"
-    bindsym l exec --no-startup-id ~/.config/i3/scripts/i3exit.sh logout, mode "default"
-    bindsym u exec --no-startup-id ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
-    bindsym h exec --no-startup-id ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
-    bindsym s exec --no-startup-id ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
+    bindsym k exec --no-startup-id sh ~/.config/i3/scripts/i3exit.sh lock, mode "default"
+    bindsym l exec --no-startup-id sh ~/.config/i3/scripts/i3exit.sh logout, mode "default"
+    bindsym u exec --no-startup-id sh ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id sh ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id sh ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
+    bindsym s exec --no-startup-id sh ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -179,8 +172,6 @@ mode "$display_layout" {
     bindsym Escape mode "default"
 }
 
-
-
 #####################################################################################################################
 #################                          reload changed configuration                             #################
 #####################################################################################################################
@@ -192,18 +183,12 @@ bindsym $mod+Shift+r restart
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
-
-
-
 #####################################################################################################################
 #################                          Stopping an application                                  #################
 #####################################################################################################################
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-
-
 
 #####################################################################################################################
 #################                          Moving around in i3                                      #################
@@ -214,7 +199,7 @@ bindsym $mod+Shift+q kill
 floating_modifier $mod
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym Mod1+space floating toggle
 
 # change focus
 bindsym $mod+$left focus left
@@ -222,48 +207,23 @@ bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-
-
-
 #####################################################################################################################
 #################                          moving around workspaces                                 #################
 #####################################################################################################################
-
-
 # next/previous workspace
 
 bindsym Mod1+Tab workspace next
 bindsym Mod1+Shift+Tab workspace prev
 bindsym $mod+Tab workspace back_and_forth
 
-#navigate workspaces next / previous
-bindsym Mod1+Ctrl+Right workspace next
-bindsym Mod1+Ctrl+Left workspace prev
-
 # switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
-
-
-
-
+# for_window [urgent=latest] focus
 
 #####################################################################################################################
 #################                          Tiling parameters                                        #################
@@ -333,10 +293,6 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-
-
-
 
 #####################################################################################################################
 #################                          choose the font                                          #################
@@ -410,7 +366,7 @@ assign [class="Geary|Evolution|Mailspring|mailspring"]                          
 
 #browser
 #exec --no-startup-id vivaldi-stable
-for_window [class="Vivaldi-stable"] focus
+# for_window [class="Vivaldi-stable"] focus
 
 #text-editor
 #exec --no-startup-id geany
@@ -431,6 +387,8 @@ exec --no-startup-id emacs --daemon
 exec --no-startup-id slack
 exec --no-startup-id telegram-desktop
 
+#Mail
+exec --no-startup-id mailspring
 
 
 # TRAY APPLICATIONS
@@ -527,12 +485,10 @@ bindsym control+mod1+u exec --no-startup-id pavucontrol
 
 # start xfce-appfinder
 #arcolinux does not seem to work
-bindsym control+mod1+a exec --no-startup-id xfce4-appfinder
+# bindsym control+mod1+a exec --no-startup-id xfce4-appfinder
 
 # start emacs client and connect to server
-bindsym Control+Shift+e exec --no-startup-id emacsclient -c server
-
-
+bindsym Control+Shift+e exec --no-startup-id emacsclient -c server;focus
 
 #workspace related
 
@@ -572,8 +528,8 @@ bindsym $mod+Shift+Return exec --no-startup-id thunar;focus
 bindsym control+mod1+b exec --no-startup-id thunar;focus
 
 #workspace 9 related
-bindsym $mod+F9 exec --no-startup-id evolution;focus
-bindsym control+mod1+e exec --no-startup-id evolution;focus
+# bindsym $mod+F9 exec --no-startup-id evolution;focus
+# bindsym control+mod1+e exec --no-startup-id evolution;focus
 #bindsym $mod+F9 exec --no-startup-id geary;focus
 #bindsym control+mod1+e exec --no-startup-id geary;focus
 
@@ -581,22 +537,16 @@ bindsym control+mod1+e exec --no-startup-id evolution;focus
 bindsym $mod+F10 exec --no-startup-id spotify;focus
 bindsym control+mod1+s exec --no-startup-id spotify;focus
 
-
-
-
 #####################################################################################################################
 #################                          screenshots                                              #################
 #####################################################################################################################
 
 
-bindsym Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
-bindsym Control+Print exec --no-startup-id xfce4-screenshooter
-bindsym Control+Shift+Print exec --no-startup-id gnome-screenshot -i
+# bindsym Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
+bindsym Print exec --no-startup-id gnome-screenshot -i
+bindsym Control+Print exec --no-startup-id gnome-screenshot -i
+bindsym Control+Shift+Print exec --no-startup-id xfce4-screenshooter
 #bindsym shift+Print exec --no-startup-id shutter
-
-
-
-
 
 #####################################################################################################################
 #################                          floating or tiled                                        #################
@@ -648,24 +598,13 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="^Preferences$"] floating enable
 for_window [window_role="setup"] floating enable
 
-
-
-
-
-
 #####################################################################################################################
 #################                          give focus to applications                               #################
 #####################################################################################################################
 
-
 for_window [class="Gnome-terminal"] focus
 for_window [class="Terminal"] focus
 for_window [class="Terminator"] focus
-
-
-
-
-
 
 #####################################################################################################################
 #################                          variety for your wallpapers                              #################
@@ -677,10 +616,10 @@ for_window [class="Terminator"] focus
 bindsym mod1+t exec --no-startup-id variety -t
 # next wallpaper
 bindsym mod1+n exec --no-startup-id variety -n
-bindsym mod1+Right exec --no-startup-id variety -n
+# bindsym mod1+Right exec --no-startup-id variety -n
 # previous wallpaper
 bindsym mod1+p exec --no-startup-id variety -p
-bindsym mod1+Left exec --no-startup-id variety -p
+# bindsym mod1+Left exec --no-startup-id variety -p
 # favorite wallpaper
 bindsym mod1+f exec --no-startup-id variety -f
 # pause wallpaper
@@ -726,24 +665,21 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop
 #################                          xbacklight                                               #################
 #####################################################################################################################
 
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
-
-
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
 
 #####################################################################################################################
 #################                          bar toggle                                               #################
 #####################################################################################################################
 
-
 # bar toggle, hide or show
 bindsym $mod+b bar mode toggle
-
 
 #####################################################################################################################
 #################                          border control                                           #################
 #####################################################################################################################
-
 
 # Border control
 hide_edge_borders both
@@ -756,16 +692,13 @@ bindsym $mod+y border 1pixel
 bindsym $mod+u border none
 
 
-#new_window pixel 1
-new_window normal
+new_window pixel 1
+# new_window normal
 #new_window none
 
-#new_float pixel 1
-new_float normal
+new_float pixel 1
+# new_float normal
 #new_float none
-
-
-
 
 #####################################################################################################################
 #################                          Popups  control                                          #################
@@ -773,8 +706,6 @@ new_float normal
 
 #Popups during fullscreen mode
 popup_during_fullscreen smart
-
-
 
 
 #####################################################################################################################
@@ -790,11 +721,8 @@ popup_during_fullscreen smart
 for_window [class="^.*"] border pixel 2
 gaps inner 5
 gaps outer 5
-#smart_gaps on
-#smart_borders on
-
-
-
+smart_gaps on
+smart_borders on
 
 
 #####################################################################################################################
@@ -840,18 +768,12 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-
-
-
 #####################################################################################################################
 #################                          compton of i3wm                                          #################
 #####################################################################################################################
 
 #if you want transparency on non-focused windows, ...
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
-
-
-
 
 #####################################################################################################################
 #####################################################################################################################
