@@ -147,6 +147,7 @@ ${color1}${hr}${color}
 ${color1}[Mod]+Return${alignr}${color2}Terminal${color}
 ${color1}[Control]+[Shift]+e${alignr}${color2}Emacs client${color}
 ${color1}[Mod]+[Shift]+Return${alignr}${color2}Thunar${color}
+${color1}[Alt]+[Control]+g${alignr}${color2}Chromium${color}
 ${color1}${hr}${color}
 ${color1}${execi 6000 lsb_release -d | grep 'Descr'|awk {'print $2 " " $3" " $4" " $5'}}${alignr}${execi 6000 lsb_release -a | grep 'Release'|awk {'print $2""$3""$4""$5'}}${color}
 ]];
