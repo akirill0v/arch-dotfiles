@@ -12,6 +12,7 @@
   become: true
   aur: name={{ item }} user={{ user.name }}
   with_items:
+    - gtk3-mushrooms
     - emacs-xclip
     - srandrd
     - enpass-bin

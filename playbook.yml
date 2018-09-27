@@ -11,5 +11,5 @@
     - { role: weechat, tags: ["messengers", "desktop"] }
     - { role: messengers, tags: ["messengers", "desktop"] }
     - { role: mail, tags: ["messengers", "desktop"] }
-    - { role: fish, tags: ["develop", "shell"] }
+    - { role: fish, tags: ["develop", "shell", "fish"] }
     - { role: containers, tags: ["containers", "docker", "kubernetes"] }
